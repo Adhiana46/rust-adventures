@@ -21,6 +21,8 @@ fn main() {
     loops_loop();
     break_and_continue();
     break_label();
+    blocks();
+    shadowing();
     println!("\n");
 }
 
@@ -223,4 +225,36 @@ fn break_label() {
             break;
         }
     }
+}
+
+fn blocks() {
+    let z = 13;
+    let x = {
+        let y = 10;
+        println!("y: {y}");
+        z - y
+    };
+    println!("x: {x}");
+}
+
+fn shadowing() {
+    let x = 5; // First declaration of x
+    println!("First x: {}", x); // 5
+    assert_eq!(x, 5);
+
+    let x = x + 1; // shadowing first x
+    println!("Shadowing First x: {}", x); // 6
+    assert_eq!(x, 6);
+
+    {
+        let x = x * 2; // Shadowing second x
+        println!("Shadowing Second x: {}", x); // 12
+        assert_eq!(x, 12);
+
+        let x = true;
+        assert_eq!(x, true);
+    }
+
+    println!("Showing value of Second x: {}", x);
+    assert_eq!(x, 6);
 }
