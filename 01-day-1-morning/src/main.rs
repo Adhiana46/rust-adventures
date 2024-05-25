@@ -2,6 +2,7 @@ fn main() {
     hello_world();
     variables();
     values();
+    println!("Arithmetic: {}", arithmetic(10, 20, 30));
 }
 
 fn hello_world() {
@@ -80,4 +81,8 @@ fn values() {
     // literal
     let is_beauty = true;
     println!("Are you beauty? {}", is_beauty);
+}
+
+fn arithmetic(a: i32, b: i32, c: i32) -> i32 {
+    return (a * b + b * c + c * a - a - b - c) / 1;
 }
