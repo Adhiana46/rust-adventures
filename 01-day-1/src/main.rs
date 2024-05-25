@@ -25,6 +25,23 @@ fn main() {
     shadowing();
     println!("exercise_collatz_length(3): {}", exercise_collatz_length(3));
     println!("\n");
+
+    // Tuples and Arrays
+    println!("=== Tuples and Arrays ===");
+    arrays();
+    tuples();
+    array_iteration();
+    print_tuple((32, true));
+
+    let matrix = [
+        [101, 102, 103], // <-- the comment makes rustfmt add a newline
+        [201, 202, 203],
+        [301, 302, 303],
+    ];
+    let transposed_matrix = exercise_transpose(matrix);
+    println!("transposed: {:#?}", transposed_matrix);
+
+    println!("\n");
 }
 
 fn hello_world() {
@@ -274,4 +291,66 @@ fn exercise_collatz_length(mut n: i32) -> u32 {
 #[test]
 fn test_exercise_collatz_length() {
     assert_eq!(exercise_collatz_length(11), 15);
+}
+
+fn arrays() {
+    // initialize array with the name of 'a'
+    // with type of i8 length of 10 and
+    // assign each item with value of 42 as default value
+    let mut a: [i8; 10] = [42; 10];
+    a[5] = 2;
+    println!("a: {a:?}");
+}
+
+fn tuples() {
+    let t: (i8, bool) = (64, true);
+    println!("t.0: {}", t.0);
+    println!("t.1: {}", t.1);
+}
+
+fn array_iteration() {
+    let primes = [2, 3, 5, 7, 11, 13, 17, 19];
+    for prime in primes {
+        for i in 2..prime {
+            assert_ne!(prime % i, 0);
+        }
+    }
+}
+
+// Destructuring tuple
+fn print_tuple(tuple: (i32, bool)) {
+    let (num, condition) = tuple;
+
+    println!("print_tuple.num: {}", num);
+    println!("print_tuple.condition: {}", condition);
+}
+
+fn exercise_transpose(matrix: [[i32; 3]; 3]) -> [[i32; 3]; 3] {
+    let mut result: [[i32; 3]; 3] = [[0; 3]; 3];
+
+    for (y, row) in matrix.iter().enumerate() {
+        for (x, cell) in row.iter().enumerate() {
+            result[x][y] = *cell;
+        }
+    }
+
+    return result;
+}
+
+#[test]
+fn test_exercise_transpose() {
+    let matrix = [
+        [101, 102, 103], //
+        [201, 202, 203],
+        [301, 302, 303],
+    ];
+    let transposed = exercise_transpose(matrix);
+    assert_eq!(
+        transposed,
+        [
+            [101, 201, 301], //
+            [102, 202, 302],
+            [103, 203, 303],
+        ]
+    );
 }
