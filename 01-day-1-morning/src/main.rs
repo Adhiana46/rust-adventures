@@ -23,6 +23,7 @@ fn main() {
     break_label();
     blocks();
     shadowing();
+    println!("exercise_collatz_length(3): {}", exercise_collatz_length(3));
     println!("\n");
 }
 
@@ -257,4 +258,20 @@ fn shadowing() {
 
     println!("Showing value of Second x: {}", x);
     assert_eq!(x, 6);
+}
+
+fn exercise_collatz_length(mut n: i32) -> u32 {
+    let mut len: u32 = 1;
+
+    while n > 1 {
+        n = if n % 2 == 0 { n / 2 } else { 3 * n + 1 };
+        len += 1;
+    }
+
+    return len;
+}
+
+#[test]
+fn test_exercise_collatz_length() {
+    assert_eq!(exercise_collatz_length(11), 15);
 }
