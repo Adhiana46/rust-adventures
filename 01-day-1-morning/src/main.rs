@@ -16,6 +16,9 @@ fn main() {
     println!("=== Control Flow Basics ===");
     if_expressions();
     ternary_expressions();
+    loops_while();
+    loops_for();
+    loops_loop();
     println!("\n");
 }
 
@@ -145,4 +148,40 @@ fn ternary_expressions() {
     let x = if "wkwkwkwk" == "lol" { 0 } else { 100 };
 
     println!("ternary_expressions (wkwkwkwk == lol ? 0 : 100): {}", x);
+}
+
+fn loops_while() {
+    let mut x = 200;
+    while x >= 10 {
+        x = x / 2;
+    }
+    println!("loops_while: {}", x);
+}
+
+fn loops_for() {
+    // For loop with range (0 to 4)
+    for x in 0..5 {
+        println!("for range: {}", x);
+    }
+
+    // For loop with inclusive range (0 to 5)
+    for x in 0..=5 {
+        println!("for inclusive range: {}", x);
+    }
+
+    for elem in [1, 2, 3, 4, 5] {
+        println!("for elem: {}", elem);
+    }
+}
+
+// The loop statement just loops forever, until a break
+fn loops_loop() {
+    let mut i = 0;
+    loop {
+        i += 1;
+        println!("loop: {}", i);
+        if i == 3 {
+            break;
+        }
+    }
 }
