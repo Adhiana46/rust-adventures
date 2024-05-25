@@ -1,3 +1,15 @@
 # 🦀🦀🦀 RustyAdventures 🦀🦀🦀
 
-Welcome to **RustyAdventures**! This repository is intended to track my progress on learning Rust, one of the most loved and powerful programming languages. Here, you'll find my collections of fun projects, exercises, and examples.
+Welcome to **RustyAdventures**! This repository is intended to track my progress on learning Rust, one of the most loved and powerful programming languages. Here, you'll find my collections of fun projects, exercises, and examples. I learn from [Comprehensive Rust](https://google.github.io/comprehensive-rust/index.html) guide from Google.
+
+## Day 1
+
+Learning the fundamental of rust including:
+
+- Installation
+- Using Cargo
+- Basic Rust syntax: variables, scalar and compound types, enums, structs, references, functions, and methods.
+- Types and type inference.
+- Control flow constructs: loops, conditionals, and so on.
+- User-defined types: structs and enums.
+- Pattern matching: destructuring enums, structs, and arrays.
