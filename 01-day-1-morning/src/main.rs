@@ -1,11 +1,22 @@
 fn main() {
+    println!("=== BASIC ===");
     hello_world();
+    println!("\n");
+
+    // Types & Values
+    println!("=== Types & Values ===");
     variables();
     values();
     println!("Arithmetic: {}", arithmetic(10, 20, 30));
     type_inference();
-
     println!("Exercise Fibonacci: {}", exercise_fibonacci(20));
+    println!("\n");
+
+    // Control Flow Basics
+    println!("=== Control Flow Basics ===");
+    if_expressions();
+    ternary_expressions();
+    println!("\n");
 }
 
 fn hello_world() {
@@ -114,4 +125,24 @@ fn exercise_fibonacci(n: u32) -> u32 {
     }
 
     return exercise_fibonacci(n - 1) + exercise_fibonacci(n - 2);
+}
+
+// if expression
+fn if_expressions() {
+    let x = 10;
+
+    if x == 0 {
+        println!("Zero");
+    } else if x < 10 {
+        println!("Biggish");
+    } else {
+        println!("Huge");
+    }
+}
+
+// ternary operation, in other lang wkwkwk
+fn ternary_expressions() {
+    let x = if "wkwkwkwk" == "lol" { 0 } else { 100 };
+
+    println!("ternary_expressions (wkwkwkwk == lol ? 0 : 100): {}", x);
 }
