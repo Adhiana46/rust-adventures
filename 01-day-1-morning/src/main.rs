@@ -3,7 +3,9 @@ fn main() {
     variables();
     values();
     println!("Arithmetic: {}", arithmetic(10, 20, 30));
-    type_inference()
+    type_inference();
+
+    println!("Exercise Fibonacci: {}", exercise_fibonacci(20));
 }
 
 fn hello_world() {
@@ -103,4 +105,13 @@ fn type_inference() {
 
     f_u8(x);
     f_i32(y);
+}
+
+// Exercise: Fibonacci
+fn exercise_fibonacci(n: u32) -> u32 {
+    if n < 2 {
+        return n;
+    }
+
+    return exercise_fibonacci(n - 1) + exercise_fibonacci(n - 2);
 }
