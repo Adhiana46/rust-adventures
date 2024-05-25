@@ -3,6 +3,7 @@ fn main() {
     variables();
     values();
     println!("Arithmetic: {}", arithmetic(10, 20, 30));
+    type_inference()
 }
 
 fn hello_world() {
@@ -85,4 +86,21 @@ fn values() {
 
 fn arithmetic(a: i32, b: i32, c: i32) -> i32 {
     return (a * b + b * c + c * a - a - b - c) / 1;
+}
+
+// Rust will look at how the variable is used to determine the type:
+fn type_inference() {
+    let x = 64; // u8
+    let y = 2048; // i32
+
+    fn f_u8(v: u8) {
+        println!("f_u8: {}", v);
+    }
+
+    fn f_i32(v: i32) {
+        println!("f_i32: {}", v);
+    }
+
+    f_u8(x);
+    f_i32(y);
 }
