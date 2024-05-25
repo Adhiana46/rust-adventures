@@ -19,6 +19,8 @@ fn main() {
     loops_while();
     loops_for();
     loops_loop();
+    break_and_continue();
+    break_label();
     println!("\n");
 }
 
@@ -181,6 +183,43 @@ fn loops_loop() {
         i += 1;
         println!("loop: {}", i);
         if i == 3 {
+            break;
+        }
+    }
+}
+
+fn break_and_continue() {
+    let mut i = 0;
+    loop {
+        i += 1;
+
+        if i == 3 {
+            // immediately start to next iteration
+            continue;
+        }
+
+        if i > 5 {
+            break;
+        }
+
+        println!("break_and_continue: {}", i);
+    }
+}
+
+fn break_label() {
+    let mut i = 0;
+    'outerloop: loop {
+        i += 1;
+
+        for j in 0..=10 {
+            println!("break_label => i: {} <--> j: {}", i, j);
+
+            if j * i > 10 {
+                break 'outerloop;
+            }
+        }
+
+        if i > 100 {
             break;
         }
     }
