@@ -328,11 +328,18 @@ fn print_tuple(tuple: (i32, bool)) {
 fn exercise_transpose(matrix: [[i32; 3]; 3]) -> [[i32; 3]; 3] {
     let mut result: [[i32; 3]; 3] = [[0; 3]; 3];
 
-    for (y, row) in matrix.iter().enumerate() {
-        for (x, cell) in row.iter().enumerate() {
-            result[x][y] = *cell;
+    for y in 0..3 {
+        for x in 0..3 {
+            result[x][y] = matrix[y][x];
         }
     }
+
+    // another solution
+    // for (y, row) in matrix.iter().enumerate() {
+    //     for (x, cell) in row.iter().enumerate() {
+    //         result[x][y] = *cell;
+    //     }
+    // }
 
     return result;
 }
