@@ -113,3 +113,35 @@ fn geometry_test() {
     normalize(&mut v);
     println!("Magnitude of {v:?} after normalization: {}", magnitude(&v));
 }
+
+struct Person {
+    name: String,
+    age: u8,
+}
+
+fn describe_person(p: &Person) {
+    println!("{} is {} years old", p.name, p.age);
+}
+
+#[test]
+fn person_test() {
+    let mut adhiana = Person {
+        name: String::from("Adhiana"),
+        age: 26,
+    };
+    describe_person(&adhiana);
+
+    adhiana.age = 28;
+    describe_person(&adhiana);
+
+    let name = "Mastur".to_string();
+    let age = 30;
+    let mastur = Person { name, age };
+    describe_person(&mastur);
+
+    let john = Person {
+        name: String::from("John"),
+        ..mastur
+    };
+    describe_person(&john);
+}
