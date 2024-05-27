@@ -14,10 +14,16 @@ mod config {
     pub const TIMEOUT: u32 = 30;
 }
 
+// Type Alias
+type Kilo = i32;
+
 fn main() {
     // Constants within function
     const PI: f64 = 3.141592653589793;
     const DAYS_IN_WEEK: u32 = 7;
+
+    let distance: Kilo = 32;
+    println!("Distance: {}", distance);
 
     // should add unsafe block to mutate mutable static
     unsafe {
