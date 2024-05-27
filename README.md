@@ -11,5 +11,13 @@ Learning the fundamental of rust including:
 - Basic Rust syntax: variables, scalar and compound types, enums, structs, references, functions, and methods.
 - Types and type inference.
 - Control flow constructs: loops, conditionals, and so on.
+
+## Day 2
+
+Still learning about the fundamental of rust:
+
 - User-defined types: structs and enums.
-- Pattern matching: destructuring enums, structs, and arrays.
+- Pattern matching: destructuring enums, structs, strings, and arrays.
+- Understanding about ownership, and a way of how it changes
+- Mutable references
+- borrowing, shadowing
