@@ -82,3 +82,34 @@ fn strings() {
     let s3: &str = &s2[s2.len() - s1.len()..];
     println!("s3: {s3}");
 }
+
+/// Calculate the magnitude of the given vector.
+fn magnitude(vector: &[f64; 3]) -> f64 {
+    let mut sum_vector = 0.0;
+    for v in vector {
+        sum_vector += v * v;
+    }
+
+    return sum_vector.sqrt();
+}
+
+/// Change the magnitude of the vector to 1.0 without changing its direction.
+fn normalize(vector: &mut [f64; 3]) {
+    let mag = magnitude(vector);
+    for item in vector {
+        *item /= mag;
+    }
+}
+
+#[test]
+fn geometry_test() {
+    println!(
+        "Magnitude of a unit vector: {}",
+        magnitude(&[0.0, 1.0, 0.0])
+    );
+
+    let mut v = [1.0, 2.0, 9.0];
+    println!("Magnitude of {v:?}: {}", magnitude(&v));
+    normalize(&mut v);
+    println!("Magnitude of {v:?} after normalization: {}", magnitude(&v));
+}
