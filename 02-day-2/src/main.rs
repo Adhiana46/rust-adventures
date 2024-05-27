@@ -114,6 +114,7 @@ fn geometry_test() {
     println!("Magnitude of {v:?} after normalization: {}", magnitude(&v));
 }
 
+// Named Struct
 struct Person {
     name: String,
     age: u8,
@@ -144,4 +145,13 @@ fn person_test() {
         ..mastur
     };
     describe_person(&john);
+}
+
+// Tuple Struct
+struct Coordinate(f64, f64);
+
+#[test]
+fn coordinate_test() {
+    let myhome = Coordinate(-7.795580, 110.369492);
+    println!("My Home Coordinate: {}, {}", myhome.0, myhome.1);
 }
