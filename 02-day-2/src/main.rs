@@ -170,6 +170,15 @@ enum PlayerMove {
     Teleport { x: u32, y: u32 }, // Struct Variant
 }
 
+#[derive(Debug)]
+#[repr(u32)]
+enum Bar {
+    A, // 0
+    B = 1000,
+    C, // 1001
+    D, // 1002
+}
+
 #[test]
 fn enum_test() {
     let mut m: PlayerMove = PlayerMove::Pass;
@@ -180,4 +189,7 @@ fn enum_test() {
 
     m = PlayerMove::Teleport { x: 12, y: 55 };
     println!("Player Move: {:?}", m);
+
+    println!("Bar Enum:");
+    println!("- A => {:?}", Bar::A);
 }
