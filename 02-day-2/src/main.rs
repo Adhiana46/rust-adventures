@@ -1,4 +1,18 @@
+// Static Variables
+// Imutable Static
+static GREETING: &str = "This is Rusty Journey";
+
+// Mutable Static
+static mut COUNTER: i64 = 0;
+
 fn main() {
+    // should add unsafe block to mutate mutable static
+    unsafe {
+        for i in 0..100 {
+            COUNTER += 1;
+        }
+    }
+
     // References
     println!("=== References ===");
     shared_references();
@@ -6,6 +20,10 @@ fn main() {
     immutable_borrow();
     borrow_slice();
     strings();
+    println!("Static Variable Imutable (Default): {}", GREETING);
+    unsafe {
+        println!("Static Variable Mutable: {}", COUNTER);
+    }
     println!("\n");
 }
 
