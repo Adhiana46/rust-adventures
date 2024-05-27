@@ -155,3 +155,29 @@ fn coordinate_test() {
     let myhome = Coordinate(-7.795580, 110.369492);
     println!("My Home Coordinate: {}, {}", myhome.0, myhome.1);
 }
+
+// ENUM
+#[derive(Debug)]
+enum Direction {
+    Left,
+    Right,
+}
+
+#[derive(Debug)]
+enum PlayerMove {
+    Pass,                        // Simple Variant
+    Run(Direction),              // Tuple Variant
+    Teleport { x: u32, y: u32 }, // Struct Variant
+}
+
+#[test]
+fn enum_test() {
+    let mut m: PlayerMove = PlayerMove::Pass;
+    println!("Player Move: {:?}", m);
+
+    m = PlayerMove::Run(Direction::Left);
+    println!("Player Move: {:?}", m);
+
+    m = PlayerMove::Teleport { x: 12, y: 55 };
+    println!("Player Move: {:?}", m);
+}
