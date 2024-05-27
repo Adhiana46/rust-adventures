@@ -5,7 +5,20 @@ static GREETING: &str = "This is Rusty Journey";
 // Mutable Static
 static mut COUNTER: i64 = 0;
 
+// Global Constants
+const MAX_POINTS: u32 = 100_000;
+
+// Module Constants
+mod config {
+    pub const BUFFER_SIZE: usize = 1024;
+    pub const TIMEOUT: u32 = 30;
+}
+
 fn main() {
+    // Constants within function
+    const PI: f64 = 3.141592653589793;
+    const DAYS_IN_WEEK: u32 = 7;
+
     // should add unsafe block to mutate mutable static
     unsafe {
         for i in 0..100 {
@@ -24,6 +37,11 @@ fn main() {
     unsafe {
         println!("Static Variable Mutable: {}", COUNTER);
     }
+    println!("Constants.Global: {}", MAX_POINTS);
+    println!("Constants.Mod.Config.BUFFER_SIZE: {}", config::BUFFER_SIZE);
+    println!("Constants.Mod.Config.TIMEOUT: {}", config::TIMEOUT);
+    println!("Constants.Local.PI: {}", PI);
+    println!("Constants.Local.DAYS_IN_WEEK: {}", DAYS_IN_WEEK);
     println!("\n");
 }
 
