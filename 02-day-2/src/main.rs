@@ -4,6 +4,8 @@ fn main() {
     shared_references();
     mutable_borrow();
     immutable_borrow();
+    borrow_slice();
+    strings();
     println!("\n");
 }
 
@@ -49,4 +51,34 @@ fn immutable_borrow() {
     // it will success, because it can have many immutable borrow
     println!("immutable_borrow.a after: {}", a);
     println!("immutable_borrow.borrow_a after: {}", borrow_a);
+}
+
+fn borrow_slice() {
+    let mut a: [i32; 6] = [10, 20, 30, 40, 50, 60];
+    println!("a: {a:?}");
+
+    let s: &[i32] = &a[2..4];
+
+    // try to change a[3], within range of s
+    // error: because it is borrowed
+    // a[3] = 11;
+
+    // try to change a[0], not in range of s
+    // error: can't change because it borrowed
+    // a[0] = 11;
+
+    println!("s: {s:?}");
+}
+
+fn strings() {
+    let s1: &str = "World";
+    println!("s1: {s1}");
+
+    let mut s2: String = String::from("Hello ");
+    println!("s2: {s2}");
+    s2.push_str(s1);
+    println!("s2: {s2}");
+
+    let s3: &str = &s2[s2.len() - s1.len()..];
+    println!("s3: {s3}");
 }
