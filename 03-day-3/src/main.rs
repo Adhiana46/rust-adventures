@@ -1,3 +1,5 @@
+mod pattern_matching;
+
 use std::fmt;
 
 #[derive(Debug)]
