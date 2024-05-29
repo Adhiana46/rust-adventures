@@ -1,61 +1,73 @@
-use rust_decimal::Decimal;
-use rust_decimal_macros::dec;
+mod pattern_matching;
 
-fn main() {
-    let a = dec!(1234.4);
-    let b = dec!(100.0);
-    let result = a * b;
-    println!("Result: {}", result);
+use std::fmt;
+
+#[derive(Debug)]
+struct Person {
+    name: String,
+    age: u8,
+    mood: Mood,
 }
 
-// mod pattern_matching;
+enum Mood {
+    Happy,
+    Normal,
+    Depressed,
+}
 
-// use std::fmt;
+// implement custom fmt::Debug
+impl fmt::Debug for Mood {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        match *self {
+            Mood::Happy => write!(f, "😊"),
+            Mood::Normal => write!(f, "😐"),
+            Mood::Depressed => write!(f, "😔"),
+        }
+    }
+}
 
-// #[derive(Debug)]
-// struct Person {
-//     name: String,
-//     age: u8,
-//     mood: Mood,
-// }
+fn create_person(name: String, age: u8) -> Person {
+    let p = Person {
+        name: name,
+        age: age,
+        mood: Mood::Normal,
+    };
 
-// enum Mood {
-//     Happy,
-//     Normal,
-//     Depressed,
-// }
+    return p;
+}
 
-// // implement custom fmt::Debug
-// impl fmt::Debug for Mood {
-//     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-//         match *self {
-//             Mood::Happy => write!(f, "😊"),
-//             Mood::Normal => write!(f, "😐"),
-//             Mood::Depressed => write!(f, "😔"),
-//         }
-//     }
-// }
+fn print_person(p: &Person) {
+    println!(
+        "Hello my name is {}, my age is {} {:?}",
+        p.name, p.age, p.mood
+    );
+}
 
-// fn print_person(p: &Person) {
-//     println!(
-//         "Hello my name is {}, my age is {} {:?}",
-//         p.name, p.age, p.mood
-//     );
-// }
+fn make_person_happy(p: &mut Person) {
+    p.mood = Mood::Happy;
+}
 
-// fn make_person_depressed(p: &mut Person) {
-//     p.mood = Mood::Depressed;
-// }
+fn make_person_depressed(p: &mut Person) {
+    p.mood = Mood::Depressed;
+}
 
-// fn main() {
-//     let mut adhiana: Person = Person {
-//         name: String::from("Adhiana Mastur"),
-//         age: 26,
-//         mood: Mood::Happy,
-//     };
+fn add_age(p: &mut Person, inc: u8) {
+    p.age = p.age + inc;
+}
 
-//     print_person(&adhiana);
-//     make_person_depressed(&mut adhiana);
-//     print_person(&adhiana);
-//     // println!("Person: {:?}", adhiana);
-// }
+fn main() {
+    let mut adhiana: Person = create_person(String::from("Adhiana Mastur"), 18);
+    // let mut adhiana: Person = Person {
+    //     name: String::from("Adhiana Mastur"),
+    //     age: 26,
+    //     mood: Mood::Happy,
+    // };
+
+    make_person_happy(&mut adhiana);
+    print_person(&adhiana);
+    println!("Eight years later....");
+    add_age(&mut adhiana, 8);
+    make_person_depressed(&mut adhiana);
+    print_person(&adhiana);
+    // println!("Person: {:?}", adhiana);
+}
