@@ -1,3 +1,4 @@
+mod associated_types;
 mod methods;
 mod pattern_matching;
 mod traits;
