@@ -1,4 +1,8 @@
-trait Pet {
+trait Animal {
+    fn leg_count(&self) -> u32;
+}
+
+trait Pet: Animal {
     fn talk(&self) -> String;
 
     fn greet(&self) {
@@ -9,6 +13,12 @@ trait Pet {
 struct Cat {
     name: String,
     age: u8,
+}
+
+impl Animal for Cat {
+    fn leg_count(&self) -> u32 {
+        4
+    }
 }
 
 impl Pet for Cat {
@@ -24,4 +34,5 @@ fn implement_traits_test() {
         age: 2,
     };
     lady.greet();
+    println!("I've {} legs", lady.leg_count());
 }
