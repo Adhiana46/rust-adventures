@@ -1,5 +1,6 @@
 mod methods;
 mod pattern_matching;
+mod traits;
 
 use std::fmt;
 
