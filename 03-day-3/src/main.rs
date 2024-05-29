@@ -1,3 +1,4 @@
+mod methods;
 mod pattern_matching;
 
 use std::fmt;
