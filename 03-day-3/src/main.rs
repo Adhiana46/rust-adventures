@@ -1,5 +1,6 @@
 mod associated_types;
 mod deriving;
+mod exercise_generic_logger;
 mod methods;
 mod pattern_matching;
 mod traits;
